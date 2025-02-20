@@ -63,7 +63,7 @@ document.addEventListener('click', (e) => {
 const calculateButton = document.querySelector('.calculate-button');
 
 calculateButton.addEventListener('click', () => {
-    // Create and append modal
+    // Create modal
     const modal = document.createElement('div');
     modal.className = 'calculator-modal';
     modal.innerHTML = `
@@ -75,7 +75,7 @@ calculateButton.addEventListener('click', () => {
             
             <div class="calculator-body">
                 <div class="input-group">
-                    <label>${currentLang === 'en' ? 'Enter Your Monthly Workspace Investment' : 'Voer Uw Maandelijkse Werkplekinvestering in'}</label>
+                    <label>${currentLang === 'en' ? 'Enter Your Monthly Investment' : 'Voer Uw Maandelijkse Investering in'}</label>
                     <div class="amount-input">
                         <span class="currency">€</span>
                         <input type="number" min="0" step="100" placeholder="3300" class="revenue-input">
@@ -83,16 +83,24 @@ calculateButton.addEventListener('click', () => {
                 </div>
 
                 <div class="calculation-result" style="display: none;">
+                    <div class="result-item status">
+                        <span class="label">${currentLang === 'en' ? 'Status' : 'Status'}</span>
+                        <span class="value qualification-status"></span>
+                    </div>
                     <div class="result-item threshold">
-                        <span class="label">${currentLang === 'en' ? 'Threshold Status' : 'Drempelstatus'}</span>
-                        <span class="value threshold-status"></span>
+                        <span class="label">${currentLang === 'en' ? 'Monthly Investment' : 'Maandelijkse Investering'}</span>
+                        <span class="value monthly-investment">€0</span>
+                    </div>
+                    <div class="result-item excess">
+                        <span class="label">${currentLang === 'en' ? 'Amount Above €2,200' : 'Bedrag Boven €2.200'}</span>
+                        <span class="value excess-amount">€0</span>
                     </div>
                     <div class="result-item kickback">
-                        <span class="label">${currentLang === 'en' ? 'Your Monthly Kickback' : 'Uw Maandelijkse Kickback'}</span>
+                        <span class="label">${currentLang === 'en' ? 'Your Monthly Return (50%)' : 'Uw Maandelijkse Rendement (50%)'}</span>
                         <span class="value kickback-amount">€0</span>
                     </div>
                     <div class="result-item annual">
-                        <span class="label">${currentLang === 'en' ? 'Annual Savings' : 'Jaarlijkse Besparingen'}</span>
+                        <span class="label">${currentLang === 'en' ? 'Annual Returns' : 'Jaarlijks Rendement'}</span>
                         <span class="value annual-savings">€0</span>
                     </div>
                 </div>
@@ -118,6 +126,7 @@ calculateButton.addEventListener('click', () => {
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
 
         .calculator-content {
@@ -201,12 +210,15 @@ calculateButton.addEventListener('click', () => {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #e1e1e1;
         }
 
         .result-item:last-child {
             border-bottom: none;
+            margin-top: 10px;
+            padding-top: 20px;
+            font-weight: 700;
         }
 
         .result-item .label {
@@ -218,12 +230,16 @@ calculateButton.addEventListener('click', () => {
             color: #2B6353;
         }
 
-        .threshold-status.qualified {
-            color: #28a745;
+        .qualification-status {
+            font-weight: 700;
         }
 
-        .threshold-status.not-qualified {
-            color: #dc3545;
+        .qualification-status.qualified {
+            color: #28a745 !important;
+        }
+
+        .qualification-status.not-qualified {
+            color: #dc3545 !important;
         }
 
         .calculate-now-btn {
@@ -252,30 +268,38 @@ calculateButton.addEventListener('click', () => {
     const calculateNowBtn = modal.querySelector('.calculate-now-btn');
     const revenueInput = modal.querySelector('.revenue-input');
     const calculationResult = modal.querySelector('.calculation-result');
-    const thresholdStatus = modal.querySelector('.threshold-status');
+    const monthlyInvestment = modal.querySelector('.monthly-investment');
+    const excessAmount = modal.querySelector('.excess-amount');
     const kickbackAmount = modal.querySelector('.kickback-amount');
     const annualSavings = modal.querySelector('.annual-savings');
+    const qualificationStatus = modal.querySelector('.qualification-status');
 
     calculateNowBtn.addEventListener('click', () => {
         const revenue = parseFloat(revenueInput.value);
         
         if (!isNaN(revenue)) {
             const threshold = 2200;
+            let excess = 0;
             let monthlyKickback = 0;
             
             if (revenue >= threshold) {
-                monthlyKickback = revenue * 0.5; // 50% kickback
-                thresholdStatus.textContent = currentLang === 'en' ? 'Qualified ✓' : 'Gekwalificeerd ✓';
-                thresholdStatus.className = 'value threshold-status qualified';
+                excess = revenue - threshold;
+                monthlyKickback = excess * 0.5; // 50% of excess amount
+                qualificationStatus.textContent = currentLang === 'en' ? '✓ Qualified' : '✓ Gekwalificeerd';
+                qualificationStatus.className = 'value qualification-status qualified';
             } else {
-                thresholdStatus.textContent = currentLang === 'en' ? 
-                    `€${(threshold - revenue).toFixed(2)} more to qualify` : 
-                    `€${(threshold - revenue).toFixed(2)} meer nodig om te kwalificeren`;
-                thresholdStatus.className = 'value threshold-status not-qualified';
+                const amountNeeded = threshold - revenue;
+                qualificationStatus.textContent = currentLang === 'en' ? 
+                    `€${amountNeeded.toFixed(2)} more needed to qualify` : 
+                    `€${amountNeeded.toFixed(2)} meer nodig om te kwalificeren`;
+                qualificationStatus.className = 'value qualification-status not-qualified';
             }
 
+            monthlyInvestment.textContent = `€${revenue.toFixed(2)}`;
+            excessAmount.textContent = `€${excess.toFixed(2)}`;
             kickbackAmount.textContent = `€${monthlyKickback.toFixed(2)}`;
             annualSavings.textContent = `€${(monthlyKickback * 12).toFixed(2)}`;
+            
             calculationResult.style.display = 'block';
         }
     });
@@ -292,7 +316,13 @@ calculateButton.addEventListener('click', () => {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
+
+    // Prevent closing when clicking inside calculator content
+    modal.querySelector('.calculator-content').addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
 });
+
 
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
