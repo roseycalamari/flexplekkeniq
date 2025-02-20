@@ -96,7 +96,7 @@ calculateButton.addEventListener('click', () => {
                         <span class="value excess-amount">€0</span>
                     </div>
                     <div class="result-item kickback">
-                        <span class="label">${currentLang === 'en' ? 'Your Monthly Return (50%)' : 'Uw Maandelijkse Rendement (50%)'}</span>
+                        <span class="label">${currentLang === 'en' ? 'Your Monthly Return' : 'Uw Maandelijkse Rendement'}</span>
                         <span class="value kickback-amount">€0</span>
                     </div>
                     <div class="result-item annual">
@@ -284,8 +284,11 @@ calculateButton.addEventListener('click', () => {
             
             if (revenue >= threshold) {
                 excess = revenue - threshold;
-                monthlyKickback = excess * 0.5; // 50% of excess amount
-                qualificationStatus.textContent = currentLang === 'en' ? '✓ Qualified' : '✓ Gekwalificeerd';
+                monthlyKickback = excess; // 100% of excess amount
+                const percentage = 100;
+                qualificationStatus.textContent = currentLang === 'en' ? 
+                    `✓ Qualified (${percentage}% return)` : 
+                    `✓ Gekwalificeerd (${percentage}% rendement)`;
                 qualificationStatus.className = 'value qualification-status qualified';
             } else {
                 const amountNeeded = threshold - revenue;
