@@ -1,5 +1,5 @@
-// Language Switching Functionality
-const languageSelect = document.getElementById('languageSelect');
+// Language Switching with Flags
+const langButtons = document.querySelectorAll('.lang-btn');
 let currentLang = 'en';
 
 function updateLanguage(lang) {
@@ -14,11 +14,284 @@ function updateLanguage(lang) {
             }
         }
     });
+    
+    // Update active state on language buttons
+    langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    
     currentLang = lang;
 }
 
-languageSelect.addEventListener('change', (e) => {
-    updateLanguage(e.target.value);
+// Initialize language buttons
+langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const lang = button.dataset.lang;
+        updateLanguage(lang);
+    });
+});
+
+// Price Toggle Functionality
+const priceToggleButtons = document.querySelectorAll('.price-toggle-btn');
+priceToggleButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const dropdown = this.nextElementSibling;
+        const isActive = dropdown.classList.contains('active');
+        
+        // Close all dropdowns first
+        document.querySelectorAll('.price-dropdown').forEach(drop => {
+            drop.classList.remove('active');
+        });
+
+        // Toggle the clicked dropdown
+        if (!isActive) {
+            dropdown.classList.add('active');
+        }
+    });
+});
+
+// Close price dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.service-item')) {
+        document.querySelectorAll('.price-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+});
+
+// Kickback Calculator Functionality
+const calculateButton = document.querySelector('.calculate-button');
+
+calculateButton.addEventListener('click', () => {
+    // Create and append modal
+    const modal = document.createElement('div');
+    modal.className = 'calculator-modal';
+    modal.innerHTML = `
+        <div class="calculator-content">
+            <div class="calculator-header">
+                <h3>${currentLang === 'en' ? 'Kickback Calculator' : 'Kickback Calculator'}</h3>
+                <button class="close-modal">×</button>
+            </div>
+            
+            <div class="calculator-body">
+                <div class="input-group">
+                    <label>${currentLang === 'en' ? 'Enter Your Monthly Workspace Investment' : 'Voer Uw Maandelijkse Werkplekinvestering in'}</label>
+                    <div class="amount-input">
+                        <span class="currency">€</span>
+                        <input type="number" min="0" step="100" placeholder="3300" class="revenue-input">
+                    </div>
+                </div>
+
+                <div class="calculation-result" style="display: none;">
+                    <div class="result-item threshold">
+                        <span class="label">${currentLang === 'en' ? 'Threshold Status' : 'Drempelstatus'}</span>
+                        <span class="value threshold-status"></span>
+                    </div>
+                    <div class="result-item kickback">
+                        <span class="label">${currentLang === 'en' ? 'Your Monthly Kickback' : 'Uw Maandelijkse Kickback'}</span>
+                        <span class="value kickback-amount">€0</span>
+                    </div>
+                    <div class="result-item annual">
+                        <span class="label">${currentLang === 'en' ? 'Annual Savings' : 'Jaarlijkse Besparingen'}</span>
+                        <span class="value annual-savings">€0</span>
+                    </div>
+                </div>
+
+                <button class="calculate-now-btn">
+                    ${currentLang === 'en' ? 'Calculate Now' : 'Nu Berekenen'}
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Add modal styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .calculator-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .calculator-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .calculator-header h3 {
+            font-size: 1.8rem;
+            color: #2B6353;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .amount-input {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .currency {
+            position: absolute;
+            left: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .revenue-input {
+            width: 100%;
+            padding: 15px 15px 15px 35px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .revenue-input:focus {
+            outline: none;
+            border-color: #2B6353;
+        }
+
+        .calculation-result {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item .label {
+            color: #666;
+        }
+
+        .result-item .value {
+            font-weight: 600;
+            color: #2B6353;
+        }
+
+        .threshold-status.qualified {
+            color: #28a745;
+        }
+
+        .threshold-status.not-qualified {
+            color: #dc3545;
+        }
+
+        .calculate-now-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2B6353;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calculate-now-btn:hover {
+            background: #55996f;
+            transform: translateY(-2px);
+        }
+    `;
+
+    document.head.appendChild(style);
+    document.body.appendChild(modal);
+
+    // Calculator functionality
+    const calculateNowBtn = modal.querySelector('.calculate-now-btn');
+    const revenueInput = modal.querySelector('.revenue-input');
+    const calculationResult = modal.querySelector('.calculation-result');
+    const thresholdStatus = modal.querySelector('.threshold-status');
+    const kickbackAmount = modal.querySelector('.kickback-amount');
+    const annualSavings = modal.querySelector('.annual-savings');
+
+    calculateNowBtn.addEventListener('click', () => {
+        const revenue = parseFloat(revenueInput.value);
+        
+        if (!isNaN(revenue)) {
+            const threshold = 2200;
+            let monthlyKickback = 0;
+            
+            if (revenue >= threshold) {
+                monthlyKickback = revenue * 0.5; // 50% kickback
+                thresholdStatus.textContent = currentLang === 'en' ? 'Qualified ✓' : 'Gekwalificeerd ✓';
+                thresholdStatus.className = 'value threshold-status qualified';
+            } else {
+                thresholdStatus.textContent = currentLang === 'en' ? 
+                    `€${(threshold - revenue).toFixed(2)} more to qualify` : 
+                    `€${(threshold - revenue).toFixed(2)} meer nodig om te kwalificeren`;
+                thresholdStatus.className = 'value threshold-status not-qualified';
+            }
+
+            kickbackAmount.textContent = `€${monthlyKickback.toFixed(2)}`;
+            annualSavings.textContent = `€${(monthlyKickback * 12).toFixed(2)}`;
+            calculationResult.style.display = 'block';
+        }
+    });
+
+    // Close modal functionality
+    const closeBtn = modal.querySelector('.close-modal');
+    
+    const closeModal = () => {
+        modal.remove();
+        style.remove();
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
 });
 
 // Smooth Scrolling for Navigation Links
@@ -37,101 +310,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header Scroll Behavior
+// Enhanced Header Scroll Behavior
 let lastScrollTop = 0;
 const header = document.getElementById('main-header');
 const headerHeight = header.offsetHeight;
 
-window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Hide header on scroll down, show on scroll up
-    if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
-        header.classList.add('hidden');
-    } else if (scrollTop < lastScrollTop || scrollTop <= headerHeight) {
-        header.classList.remove('hidden');
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
+        // Scrolling down
+        header.classList.add('hide');
+    } else {
+        // Scrolling up
+        header.classList.remove('hide');
     }
 
-    lastScrollTop = scrollTop;
-});
-
-// Initialize Map
-function initMap() {
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'https://api.maptiler.com/maps/basic-v2/style.json?key=CjJUUuaqGXfKiV9rFYZv',
-        center: [4.656435, 52.484174], // Coordinates for Schieland 18, Beverwijk
-        zoom: 15
-    });
-
-    // Add marker for the location
-    const marker = new mapboxgl.Marker({
-        color: "#55996f",
-        scale: 1.2
-    })
-    .setLngLat([4.656435, 52.484174])
-    .addTo(map);
-
-    // Add popup with address
-    const popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false,
-        offset: 25
-    })
-    .setHTML('<div style="padding: 10px;"><strong>FlexPlekken IQ</strong><br>Schieland 18, 1948 RM Beverwijk</div>')
-    .setLngLat([4.656435, 52.484174]);
-
-    marker.setPopup(popup);
-    popup.addTo(map);
-
-    // Add navigation controls
-    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-}
-
-// Initialize map when the page loads
-window.addEventListener('load', initMap);
-
-// Booking Button Handlers
-const bookingButtons = document.querySelectorAll('.book-now-btn, .cta-button, .book-membership-btn, .book-daypass-btn');
-
-bookingButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const message = currentLang === 'en' 
-            ? 'Booking functionality will be implemented soon. Please contact us at info@flexplekkeniq.com for reservations.'
-            : 'Boekingsfunctionaliteit wordt binnenkort geïmplementeerd. Neem contact op via info@flexplekkeniq.com voor reserveringen.';
-        alert(message);
-    });
-});
-
-// Form Submission Handler with Language Support
-const inquiryForm = document.getElementById('inquiry-form');
-
-if (inquiryForm) {
-    inquiryForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Collect form data
-        const formData = {
-            name: this.querySelector('input[type="text"]').value,
-            email: this.querySelector('input[type="email"]').value,
-            phone: this.querySelector('input[type="tel"]').value,
-            message: this.querySelector('textarea').value
-        };
-
-        // Simulated form submission
-        console.log('Form Submission:', formData);
-        
-        // Show success message based on current language
-        const successMessage = currentLang === 'en'
-            ? 'Thank you for your inquiry! We will get back to you soon.'
-            : 'Bedankt voor uw aanvraag! We nemen spoedig contact met u op.';
-        
-        alert(successMessage);
-        
-        // Reset form
-        this.reset();
-    });
-}
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+}, false);
 
 // Services Section Animation
 const serviceItems = document.querySelectorAll('.service-item');
@@ -159,40 +355,31 @@ serviceItems.forEach(item => {
     serviceObserver.observe(item);
 });
 
-// Booking Options Animation
-const bookingTypes = document.querySelectorAll('.booking-type');
+// Form Submission Handler
+const inquiryForm = document.getElementById('inquiry-form');
 
-const bookingObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
+if (inquiryForm) {
+    inquiryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: this.querySelector('input[type="text"]').value,
+            email: this.querySelector('input[type="email"]').value,
+            phone: this.querySelector('input[type="tel"]').value,
+            message: this.querySelector('textarea').value
+        };
+
+        console.log('Form Submission:', formData);
+        
+        const successMessage = currentLang === 'en'
+            ? 'Thank you for your inquiry! We will get back to you soon.'
+            : 'Bedankt voor uw aanvraag! We nemen spoedig contact met u op.';
+        
+        alert(successMessage);
+        
+        this.reset();
     });
-}, observerOptions);
-
-bookingTypes.forEach(item => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(20px)';
-    item.style.transition = 'all 0.6s ease-out';
-    bookingObserver.observe(item);
-});
-
-// Form Input Animation
-const formInputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
-
-formInputs.forEach(input => {
-    input.addEventListener('focus', function() {
-        this.parentElement.classList.add('focused');
-    });
-
-    input.addEventListener('blur', function() {
-        if (!this.value) {
-            this.parentElement.classList.remove('focused');
-        }
-    });
-});
+}
 
 // Initialize language on page load
 updateLanguage('en');
