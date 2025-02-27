@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexPlekken IQ - Terms of Service</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #55996f;
+            --secondary-green: #55996f;
+            --white: #ffffff;
+            --light-gray: #f4f4f4;
+            --dark-text: #2c3e50;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Back to Website Button */
+        .back-to-website {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .back-button:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Terms of Service Content */
+        .page-content {
+            padding-top: 80px;
+            padding-bottom: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .terms-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--dark-text);
+        }
+
+        .terms-content ul, .terms-content ol {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        .terms-content li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .date-updated {
+            text-align: center;
+            font-style: italic;
+            margin-top: 60px;
+            color: #777;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-gray);
+            padding: 30px 5%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .terms-content p, .terms-content li {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Website Button -->
+    <div class="back-to-website">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Website
+        </a>
+    </div>
+
+    <!-- Terms of Service Content -->
+    <div class="page-content">
+        <h1 class="page-title">Terms of Service</h1>
+        
+        <div class="terms-content">
+            <div class="info-box">
+                <p><strong>Welcome to FlexPlekken IQ.</strong> These Terms of Service govern your use of our coworking space, services, and website. By using our services, you agree to these terms.</p>
+            </div>
+            
+            <h2 class="section-title">1. Membership and Services</h2>
+            <p>FlexPlekken IQ offers various coworking membership options and services, including flexible desk rentals, private offices, meeting rooms, and additional amenities. By signing up for our services, you agree to the following:</p>
+            <ul>
+                <li>Membership is valid only for the individual or organization named in the agreement.</li>
+                <li>Access to the workspace is available during published business hours, which may be subject to change.</li>
+                <li>FlexPlekken IQ reserves the right to modify services, facilities, or hours of operation with reasonable notice.</li>
+                <li>Use of additional services (meeting rooms, events, etc.) may incur additional charges as outlined in our current price list.</li>
+            </ul>
+            
+            <h2 class="section-title">2. Payments and Billing</h2>
+            <p>The following terms apply to all payments and billing:</p>
+            <ul>
+                <li>Membership fees are due on the first day of each month or on the agreed billing cycle.</li>
+                <li>Payments must be made via the approved payment methods provided by FlexPlekken IQ.</li>
+                <li>Late payments may incur additional fees and may result in suspension of services.</li>
+                <li>Prices are subject to periodic review and may be adjusted with at least 30 days prior notice.</li>
+                <li>The kickback program terms are outlined separately and are subject to specific conditions.</li>
+            </ul>
+            
+            <h2 class="section-title">3. Workspace Rules and Etiquette</h2>
+            <p>To ensure a productive and pleasant environment for all members, you agree to:</p>
+            <ul>
+                <li>Respect other members' privacy, property, and right to work without disturbance.</li>
+                <li>Maintain a professional atmosphere suitable for a business environment.</li>
+                <li>Use reasonable care when using the facilities, equipment, and common areas.</li>
+                <li>Follow all posted rules regarding meeting room usage, kitchen facilities, and common areas.</li>
+                <li>Not engage in any illegal activities on the premises.</li>
+                <li>Not bring pets (except service animals) without prior permission.</li>
+                <li>Not make alterations to the space without prior written consent.</li>
+            </ul>
+            
+            <h2 class="section-title">4. Termination and Cancellation</h2>
+            <p>Either party may terminate the membership agreement under the following conditions:</p>
+            <ul>
+                <li>Members must provide written notice at least 30 days before the end of the current billing period.</li>
+                <li>FlexPlekken IQ may terminate membership immediately for violations of these terms, illegal activities, or behavior that disrupts other members.</li>
+                <li>Upon termination, members must remove all personal belongings and return any access cards or keys.</li>
+                <li>FlexPlekken IQ reserves the right to charge for any damage beyond normal wear and tear.</li>
+            </ul>
+            
+            <h2 class="section-title">5. Liability and Insurance</h2>
+            <p>Regarding liability and insurance:</p>
+            <ul>
+                <li>FlexPlekken IQ is not responsible for loss, theft, or damage to personal belongings.</li>
+                <li>Members are advised to maintain their own insurance for business equipment and personal items.</li>
+                <li>Members are responsible for any damage they cause to the facility or equipment.</li>
+                <li>FlexPlekken IQ maintains general liability insurance for the premises but this does not cover members' personal property.</li>
+            </ul>
+            
+            <h2 class="section-title">6. Confidentiality and Data Protection</h2>
+            <p>We take confidentiality and data protection seriously:</p>
+            <ul>
+                <li>Members agree to respect the confidentiality of other members' business and personal information.</li>
+                <li>FlexPlekken IQ will handle all personal data in accordance with our Privacy Policy and applicable data protection laws.</li>
+                <li>We may collect information necessary to provide services and maintain security.</li>
+            </ul>
+            
+            <h2 class="section-title">7. Intellectual Property</h2>
+            <p>The following applies to intellectual property:</p>
+            <ul>
+                <li>All FlexPlekken IQ branding, logos, and website content are protected by copyright and other intellectual property rights.</li>
+                <li>Members may not use FlexPlekken IQ's branding or materials without express permission.</li>
+                <li>Membership does not grant any right to use FlexPlekken IQ's intellectual property for commercial purposes.</li>
+            </ul>
+            
+            <h2 class="section-title">8. Modifications to Terms</h2>
+            <p>FlexPlekken IQ reserves the right to modify these Terms of Service at any time. We will notify members of significant changes via email or posting notices in the workspace. Continued use of our services after such modifications constitutes acceptance of the updated terms.</p>
+            
+            <h2 class="section-title">9. Governing Law</h2>
+            <p>These Terms of Service shall be governed by and construed in accordance with the laws of the Netherlands. Any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts in the Netherlands.</p>
+            
+            <h2 class="section-title">10. Contact Information</h2>
+            <p>If you have any questions about these Terms of Service, please contact us at:</p>
+            <p>
+                FlexPlekken IQ<br>
+                Schieland 18, 1948 RM Beverwijk, Netherlands<br>
+                Email: schieland@schieland18.nl<br>
+                Phone: +31 0634 261817
+            </p>
+            
+            <p class="date-updated">Last Updated: February 26, 2025</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 FlexPlekken IQ. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple language switching functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.dataset.lang;
+                
+                // Update active state on language buttons
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+                
+                // In a real implementation, this would handle translation
+                console.log(`Language switched to: ${lang}`);
+            });
+        });
+        
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            // If needed, you could add back-to-top button logic here
+        });

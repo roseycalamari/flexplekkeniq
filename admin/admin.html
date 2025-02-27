@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexPlekken IQ - Room Management Console</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="../SCHIELAND VASTGOED BEVERWIJK_Logo.png" alt="FlexPlekken IQ Logo">
+                <h1>Room Management Console</h1>
+            </div>
+            <div class="user-controls">
+                <button id="reload-data" class="action-button">
+                    <i class="fas fa-sync-alt"></i> Refresh Data
+                </button>
+                <a href="../index.html" class="action-button secondary">
+                    <i class="fas fa-home"></i> Back to Site
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard">
+            <div class="status-overview">
+                <div class="status-card" id="available-rooms">
+                    <div class="status-value">--</div>
+                    <div class="status-label">Available Rooms</div>
+                    <i class="fas fa-check-circle card-icon available"></i>
+                </div>
+                <div class="status-card" id="occupied-rooms">
+                    <div class="status-value">--</div>
+                    <div class="status-label">Occupied Rooms</div>
+                    <i class="fas fa-times-circle card-icon occupied"></i>
+                </div>
+                <div class="status-card" id="total-capacity">
+                    <div class="status-value">--</div>
+                    <div class="status-label">Total Capacity</div>
+                    <i class="fas fa-users card-icon"></i>
+                </div>
+                <div class="status-card" id="occupancy-time">
+                    <div class="status-value">--</div>
+                    <div class="status-label">Current Time</div>
+                    <i class="fas fa-clock card-icon"></i>
+                </div>
+            </div>
+
+            <div class="room-management-section">
+                <div class="section-header">
+                    <h2>Room Management</h2>
+                    <button id="reset-all-rooms" class="reset-button">
+                        <i class="fas fa-redo-alt"></i> Reset All Rooms
+                    </button>
+                </div>
+
+                <div class="room-categories">
+                    <div class="room-category">
+                        <h3>Small Meeting Rooms</h3>
+                        <div class="room-list" id="small-rooms-list">
+                            <!-- Small rooms will be populated here via JavaScript -->
+                            <div class="loading">Loading room data...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-category">
+                        <h3>Large Conference Rooms</h3>
+                        <div class="room-list" id="large-rooms-list">
+                            <!-- Large rooms will be populated here via JavaScript -->
+                            <div class="loading">Loading room data...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 FlexPlekken IQ Admin Console. For authorized personnel only.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for confirmation -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmation-message">Are you sure you want to perform this action?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-action" class="action-button">Confirm</button>
+                <button id="cancel-action" class="action-button secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include shared data structure JS -->
+    <script src="../room-availability.js"></script>
+    <!-- Include admin-specific JS -->
+    <script src="admin-script.js"></script>
+</body>
+</html>

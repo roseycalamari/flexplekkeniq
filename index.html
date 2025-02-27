@@ -6,6 +6,7 @@
     <title>FlexPlekken IQ - Premium Coworking Space</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="room-availability-styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -13,7 +14,7 @@
 <header id="main-header">
     <div class="header-container">
         <div class="logo">
-            <img src="logos green  padding.png" alt="FlexPlekken IQ Logo">
+            <img src="SCHIELAND VASTGOED BEVERWIJK_Logo.png" alt="FlexPlekken IQ Logo">
         </div>
         <nav>
             <ul>
@@ -95,72 +96,100 @@
             </div>
         </div>
 
-<!-- Modern Promotional Section -->
-<section class="kickback-section">
+        <!-- Kickback Section -->
+<section id="kickback-fee" class="kickback-section">
+    <h2 class="section-title" data-en="Kickback Program" data-nl="Kickback Programma">Kickback Program</h2>
+    
     <div class="kickback-container">
-        <div class="kickback-content">
+        <div class="kickback-intro glass-effect">
             <div class="kickback-header">
-                <span class="accent-tag" data-en="Exclusive Offer" data-nl="Exclusief Aanbod">Exclusive Offer</span>
-                <h2 data-en="Earn While You Work" data-nl="Verdien Terwijl Je Werkt">Earn While You Work</h2>
-                <p class="kickback-subtitle" data-en="Join our premium kickback program and get returns on everything above €2,200" 
-                   data-nl="Word lid van ons premium kickback-programma en ontvang rendement over alles boven €2.200">
-                    Join our premium kickback program and get returns on everything above €2,200
-                </p>
+                <i class="fas fa-gift kickback-icon"></i>
+                <h3 data-en="Unique Concept in the Netherlands" data-nl="Uniek Concept in Nederland">Unique Concept in the Netherlands</h3>
             </div>
-
-            <div class="kickback-features">
-                <div class="feature-card threshold">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+            <p data-en="FlexPlekken IQ offers a revolutionary approach to coworking: become both a member and supporter of our workspaces and receive significant kickbacks on your membership." 
+               data-nl="FlexPlekken IQ biedt een revolutionaire benadering van coworking: word zowel lid als supporter van onze werkruimtes en ontvang aanzienlijke kickbacks op je lidmaatschap.">
+               FlexPlekken IQ offers a revolutionary approach to coworking: become both a member and supporter of our workspaces and receive significant kickbacks on your membership.
+            </p>
+        </div>
+        
+        <div class="kickback-details">
+            <div class="how-it-works glass-effect">
+                <h3 data-en="How It Works" data-nl="Hoe Het Werkt">How It Works</h3>
+                <ul class="kickback-features">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Base cost per month: <strong>€2,200</strong>" data-nl="Basiskosten per maand: <strong>€2,200</strong>">Base cost per month: <strong>€2,200</strong></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Revenue above this threshold is shared with members" data-nl="Inkomsten boven deze drempel worden gedeeld met leden">Revenue above this threshold is shared with members</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Members receive <strong>50%</strong> of the excess amount" data-nl="Leden ontvangen <strong>50%</strong> van het overschot">Members receive <strong>50%</strong> of the excess amount</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span data-en="Distribution is calculated monthly" data-nl="Verdeling wordt maandelijks berekend">Distribution is calculated monthly</span>
+                    </li>
+                </ul>
+                <button class="calculate-button" data-en="Calculate Your Returns" data-nl="Bereken Je Rendement">Calculate Your Returns</button>
+            </div>
+            
+            <div class="calculation-example glass-effect">
+                <h3 data-en="Example Calculation" data-nl="Voorbeeldberekening">Example Calculation</h3>
+                <div class="calc-example-container">
+                    <div class="calc-row">
+                        <span data-en="Monthly Revenue:" data-nl="Maandelijkse Inkomsten:">Monthly Revenue:</span>
+                        <span class="amount">€3,300</span>
                     </div>
-                    <h3 data-en="Threshold" data-nl="Drempel">Threshold</h3>
-                    <div class="threshold-amount">€2,200</div>
-                    <p data-en="Minimum monthly investment" data-nl="Minimale maandelijkse investering">
-                        Minimum monthly investment
-                    </p>
-                </div>
-
-                <div class="feature-card returns">
-                    <div class="feature-icon">
-                        <i class="fas fa-percentage"></i>
+                    <div class="calc-row">
+                        <span data-en="Base Cost:" data-nl="Basiskosten:">Base Cost:</span>
+                        <span class="amount">€2,200</span>
                     </div>
-                    <h3 data-en="Returns" data-nl="Retournering">Returns</h3>
-                    <div class="returns-amount">100%+</div>
-                    <p data-en="On everything above threshold" data-nl="Over alles boven de drempel">
-                        On everything above threshold
-                    </p>
-                </div>
-
-                <div class="feature-card example">
-                    <div class="feature-icon">
-                        <i class="fas fa-euro-sign"></i>
+                    <div class="calc-row">
+                        <span data-en="Excess Amount:" data-nl="Overschotbedrag:">Excess Amount:</span>
+                        <span class="amount">€1,100</span>
                     </div>
-                    <h3 data-en="Example Calculation" data-nl="Rekenvoorbeeld">Example Calculation</h3>
-                    <div class="savings-calculation">
-                        <div class="calc-row">
-                            <span>Monthly Investment:</span>
-                            <span class="amount">€3,300</span>
+                    <div class="calc-divider"></div>
+                    <div class="calc-row highlight">
+                        <div class="kickback-row">
+                            <span class="kickback-label" data-en="Your Kickback:" data-nl="Jouw Kickback:">Your Kickback:</span>
+                            <span class="percentage">50%</span>
+                            <span class="kickback-amount">€1,100</span>
                         </div>
-                        <div class="calc-row">
-                            <span>Amount Above Threshold:</span>
-                            <span class="amount">€1,100</span>
-                        </div>
-                        <div class="calc-row highlight">
-                            <span>Your Monthly Return (100%):</span>
-                            <span class="amount">€1,100</span>
-                        </div>
+                    </div>
+                    <div class="calc-row total">
+                        <span data-en="Annual Return:" data-nl="Jaarlijks Rendement:">Annual Return:</span>
+                        <span class="amount annual">€13,200</span>
                     </div>
                 </div>
             </div>
-
-            <div class="kickback-cta">
-                <button class="calculate-button" data-en="Calculate Your Returns" data-nl="Bereken Uw Rendement">
-                    Calculate Your Returns
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                <p class="cta-note" data-en="No commitment required to calculate" data-nl="Geen verplichtingen om te berekenen">
-                    No commitment required to calculate
-                </p>
+        </div>
+        
+        <div class="kickback-benefits glass-effect">
+            <h3 data-en="Member Benefits" data-nl="Ledenvoordelen">Member Benefits</h3>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-euro-sign"></i>
+                    <h4 data-en="Reduced Costs" data-nl="Verlaagde Kosten">Reduced Costs</h4>
+                    <p data-en="Significantly lower your effective membership fees" data-nl="Verlaag aanzienlijk je effectieve lidmaatschapskosten">Significantly lower your effective membership fees</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h4 data-en="Passive Income" data-nl="Passief Inkomen">Passive Income</h4>
+                    <p data-en="Earn monthly returns while using the workspace" data-nl="Verdien maandelijks rendement terwijl je de werkruimte gebruikt">Earn monthly returns while using the workspace</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-users"></i>
+                    <h4 data-en="Community" data-nl="Gemeenschap">Community</h4>
+                    <p data-en="Be part of a unique cooperative workspace model" data-nl="Maak deel uit van een uniek coöperatief werkruimtemodel">Be part of a unique cooperative workspace model</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4 data-en="Growing Returns" data-nl="Groeiend Rendement">Growing Returns</h4>
+                    <p data-en="As occupancy increases, so do your kickbacks" data-nl="Naarmate de bezetting toeneemt, groeien ook je kickbacks">As occupancy increases, so do your kickbacks</p>
+                </div>
             </div>
         </div>
     </div>
@@ -207,7 +236,7 @@
                 <li data-en="Unlimited amenities" data-nl="Onbeperkte voorzieningen">Unlimited amenities</li>
                 <li data-en="Complimentary refreshments" data-nl="Gratis versnaperingen">Complimentary refreshments</li>
             </ul>
-            <button class="book-membership-btn" data-en="Explore Memberships" data-nl="Verken Lidmaatschappen">Explore Memberships</button>
+            <a href="#services" class="book-membership-btn" data-en="Explore Memberships" data-nl="Verken Lidmaatschappen">Explore Memberships</a>
         </div>
         <div class="booking-type">
             <h3 data-en="Meeting Room Bookings" data-nl="Vergaderruimte Boekingen">Meeting Room Bookings</h3>
@@ -217,7 +246,95 @@
                 <li data-en="Full AV equipment included" data-nl="Inclusief alle AV-apparatuur">Full AV equipment included</li>
                 <li data-en="Coffee & tea service available" data-nl="Koffie & thee service beschikbaar">Coffee & tea service available</li>
             </ul>
-            <button class="book-daypass-btn" data-en="Book Meeting Room" data-nl="Boek Vergaderruimte">Book Meeting Room</button>
+            <a href="mailto:schieland@schieland18.nl" class="book-daypass-btn" data-en="Book Meeting Room" data-nl="Boek Vergaderruimte">Book Meeting Room</a>
+        </div>
+    </div>
+
+    <!-- Live Availability Section -->
+    <div class="live-availability">
+        <h3 class="availability-title" data-en="Live Room Availability" data-nl="Actuele Ruimte Beschikbaarheid">Live Room Availability</h3>
+        <div class="availability-date" id="availability-date"></div>
+        
+        <div class="room-availability-container">
+            <!-- Small Rooms Section -->
+            <div class="room-category">
+                <h4 data-en="Small Meeting Rooms" data-nl="Kleine Vergaderruimtes">Small Meeting Rooms</h4>
+                <div class="rooms-grid" id="small-rooms-grid">
+                    <!-- Room cards will be inserted here dynamically -->
+                    <div class="loading-indicator">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <span data-en="Loading availability..." data-nl="Beschikbaarheid laden...">Loading availability...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Large Rooms Section -->
+            <div class="room-category">
+                <h4 data-en="Large Conference Rooms" data-nl="Grote Conferentieruimtes">Large Conference Rooms</h4>
+                <div class="rooms-grid" id="large-rooms-grid">
+                    <!-- Room cards will be inserted here dynamically -->
+                    <div class="loading-indicator">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <span data-en="Loading availability..." data-nl="Beschikbaarheid laden...">Loading availability...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Inside the availability-footer div in the #availability section -->
+<div class="availability-footer">
+    <p data-en="Rooms can be booked from 8:00 to 20:00, Monday to Friday" data-nl="Ruimtes kunnen worden geboekt van 8:00 tot 20:00, maandag tot vrijdag">Rooms can be booked from 8:00 to 20:00, Monday to Friday</p>
+    <a href="#contact" class="book-room-btn" data-en="Book a Room" data-nl="Boek een Ruimte">Book a Room</a>
+</div>
+    </div>
+</section> 
+
+<!-- Schedule Section -->
+<section id="schedule">
+    <h2 class="section-title" data-en="Opening Hours" data-nl="Openingstijden">Opening Hours</h2>
+    <div class="schedule-container">
+        <div class="schedule-card">
+            <div class="schedule-header">
+                <i class="fas fa-clock schedule-icon"></i>
+                <h3 data-en="Working Hours" data-nl="Werktijden">Working Hours</h3>
+            </div>
+            <div class="schedule-content">
+                <div class="schedule-row">
+                    <span class="day" data-en="Monday - Friday" data-nl="Maandag - Vrijdag">Monday - Friday</span>
+                    <span class="hours">8:00 - 20:00</span>
+                </div>
+                <div class="schedule-row">
+                    <span class="day" data-en="Saturday" data-nl="Zaterdag">Saturday</span>
+                    <span class="hours">9:00 - 18:00</span>
+                </div>
+                <div class="schedule-row">
+                    <span class="day" data-en="Sunday" data-nl="Zondag">Sunday</span>
+                    <span class="hours" data-en="Closed" data-nl="Gesloten">Closed</span>
+                </div>
+            </div>
+            <div class="schedule-footer">
+                <p data-en="Meeting rooms can be booked during opening hours" data-nl="Vergaderruimtes kunnen worden geboekt tijdens openingstijden">Meeting rooms can be booked during opening hours</p>
+                <a href="#availability" class="view-rooms-btn" data-en="View Room Availability" data-nl="Bekijk Beschikbaarheid">View Room Availability</a>
+            </div>
+        </div>
+        
+        <div class="schedule-features">
+            <div class="feature-item">
+                <i class="fas fa-wifi"></i>
+                <span data-en="24/7 WiFi Access" data-nl="24/7 WiFi-toegang">24/7 WiFi Access</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-key"></i>
+                <span data-en="Member Key Access" data-nl="Toegang met ledensleutel">Member Key Access</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-coffee"></i>
+                <span data-en="Coffee Bar: 8:00-18:00" data-nl="Koffiebar: 8:00-18:00">Coffee Bar: 8:00-18:00</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-calendar-check"></i>
+                <span data-en="Online Booking Available" data-nl="Online boeken beschikbaar">Online Booking Available</span>
+            </div>
         </div>
     </div>
 </section>
@@ -229,12 +346,15 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <p>Schieland 18, 1948 RM Beverwijk, Netherlands</p>
-                    <p>Email: info@flexplekkeniq.com</p>
-                    <p>Phone: +31 (0)XX XXX XXXX</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <p>Email: schieland@schieland18.nl</p>
+                    <p>Phone: +31 0634 261817</p>
+                    <div class="contact-links">
+                        <a href="mailto:schieland@schieland18.nl" class="contact-link">
+                            <i class="far fa-envelope"></i> Email Us
+                        </a>
+                        <a href="https://wa.me/31XXXXXXXXXX" class="contact-link">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
                     </div>
                 </div>
                 <div class="map-container">
@@ -247,15 +367,6 @@
                     </iframe>
                 </div>
             </div>
-            <div class="contact-form">
-                <form id="inquiry-form">
-                    <input type="text" placeholder="Your Name" data-en="Your Name" data-nl="Uw Naam" required>
-                    <input type="email" placeholder="Your Email" data-en="Your Email" data-nl="Uw E-mail" required>
-                    <input type="tel" placeholder="Your Phone (Optional)" data-en="Your Phone (Optional)" data-nl="Uw Telefoon (Optioneel)">
-                    <textarea placeholder="Your Message" data-en="Your Message" data-nl="Uw Bericht" required></textarea>
-                    <button type="submit" data-en="Send Inquiry" data-nl="Verstuur Aanvraag">Send Inquiry</button>
-                </form>
-            </div>
         </div>
     </section>
 
@@ -264,12 +375,14 @@
         <div class="footer-content">
             <p>&copy; 2025 FlexPlekken IQ. All Rights Reserved.</p>
             <div class="footer-links">
-                <a href="#" data-en="Privacy Policy" data-nl="Privacybeleid">Privacy Policy</a>
-                <a href="#" data-en="Terms of Service" data-nl="Servicevoorwaarden">Terms of Service</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="room-availability.js"></script>
+    <script src="availability-script.js"></script>
 </body>
 </html>
